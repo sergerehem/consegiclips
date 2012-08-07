@@ -27,7 +27,7 @@ class ProgramacaoPorDia(webapp2.RequestHandler):
   def get(self, data):
     ano, mes, dia = data.split('-')
     path = os.path.join(os.path.dirname( __file__ ), 'palestras.html' )
-    self.response.out.write(template.render(path, { 'titulo': "Palestras do dia " + util.formata_dia_mes(dia, mes), 'palestras': model.obtem_palestras_por_dia(data) } ))
+    self.response.out.write(template.render(path, { 'titulo': "Palestras do dia " + util.formata_dia_mes(ano, mes), 'palestras': model.obtem_palestras_por_dia(data) } ))
       
 class ProgramacaoSalas(webapp2.RequestHandler):
   def get(self):
