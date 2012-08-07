@@ -1,0 +1,30 @@
+{% extends "templates/base.html" %}
+{% block content %}
+<div data-role="content">
+  <ul data-role="listview" data-inset="true">
+  <li data-role="list-divider" class="ui-bar-c">{{titulo}}</li>        
+  {% for dia_hora,palestra in palestras.iteritems %}
+    <div data-role="collapsible" data-collapsed="true">
+      <h3>{{palestra.titulo}}</h3>
+      <p>{{palestra.resumo}}</p>
+      <br/>
+<!--
+      <p><strong>Palestrantes:</strong></p>
+      <ul>
+      {% for author in talk.authors.all %}
+      <li>{{ author.name }}</li>
+      {% empty %}
+      <li>Nenhum palestrante.</li>
+      {% endfor %}
+      </ul>
+-->        
+      <p><strong>Data:</strong> {{palestra.data}}</p>
+      <p><strong>Hora:</strong> {{palestra.hora}}</p>        
+      <p><strong>Sala:</strong> <a href="/sala/{{palestra.sala_id}}/{{palestra.sala_nome}}">{{palestra.sala_nome}}</a></p>
+      <p><strong>Trilha:</strong> <a href="/trilha/{{palestra.trilha_id}}/{{palestra.trilha_nome}}">{{palestra.trilha_nome}}</a></p>
+      <p><strong>&Aacute;rea:</strong> <a href="/area/{{palestra.area_id}}/{{palestra.area_nome.nome}}">{{palestra.area_nome.nome}}</a></p>
+    </div>
+  {% endfor %}           
+  </ul>
+</div>
+{% endblock %}

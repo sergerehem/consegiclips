@@ -1,0 +1,23 @@
+{% extends "templates/base.html" %}
+{% block content %}
+<div data-role="content">
+  <!--
+  <form action="/busca/" method="get">
+      <input type="search" name="search" id="search-basic" value="" placeholder="Busca"/>
+  </form>
+  -->
+  <ul data-role="listview" data-inset="true">
+    <li data-role="list-divider" class="ui-bar-c">Programa&ccedil;&atilde;o</li>
+<!--        <li><a href="/agora" rel="external">Agora!</a></li> -->
+    <li><a href="/dias" rel="external">Por Dia</a></li>
+    <li><a href="/salas" rel="external">Por Sala</a></li>
+    <li><a href="/trilhas" rel="external">Por Trilha</a></li>
+    <li><a href="/areas" rel="external">Por Área Temática</a></li>    
+  </ul>
+
+  <ul data-role="listview" data-inset="true">
+    <li><a href="sobre/">Sobre o Clips</a></li>
+    <li><a href="http://www.consegi.gov.br/">Site oficial CONSEGI</a></li>
+  </ul>
+</div>
+{% endblock %}

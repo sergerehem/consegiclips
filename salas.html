@@ -1,0 +1,11 @@
+{% extends "templates/base.html" %}
+{% block content %}
+<div data-role="content">
+  <ul data-role="listview" data-inset="true">
+  <li data-role="list-divider" class="ui-bar-c">Programação por Sala</li>        
+  {% for id,sala in salas %}
+    <li><a href="/sala/{{id}}/{{sala}}" rel="external">{{sala}}</a></li>
+  {% endfor %}            
+  </ul>
+</div>
+{% endblock %}

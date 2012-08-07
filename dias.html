@@ -1,0 +1,11 @@
+{% extends "templates/base.html" %}
+{% block content %}
+<div data-role="content">
+  <ul data-role="listview" data-inset="true">
+  <li data-role="list-divider" class="ui-bar-c">Programação por Dia</li>        
+  {% for id,dia in dias %}
+    <li><a href="/dia/{{id}}" rel="external">{{dia}}</a></li>
+  {% endfor %}            
+  </ul>
+</div>
+{% endblock %}
