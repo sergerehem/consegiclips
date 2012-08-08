@@ -3,7 +3,7 @@
 <div data-role="content">
   <ul data-role="listview" data-inset="true">
   <li data-role="list-divider" class="ui-bar-c">{{titulo}}</li>        
-  {% for dia_hora,palestra in palestras.iteritems %}
+  {% for dia_hora,palestra in palestras %}
     <div data-role="collapsible" data-collapsed="true">
       <h3>{{palestra.titulo}}</h3>
       <p>{{palestra.resumo}}</p>

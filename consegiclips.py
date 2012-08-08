@@ -27,7 +27,7 @@ class ProgramacaoPorDia(webapp2.RequestHandler):
   def get(self, data):
     ano, mes, dia = data.split('-')
     path = os.path.join(os.path.dirname( __file__ ), 'palestras.html' )
-    self.response.out.write(template.render(path, { 'titulo': "Palestras do dia " + util.formata_dia_mes(dia, mes), 'palestras': model.obtem_palestras_por_dia(data) } ))
+    self.response.out.write(template.render(path, { 'titulo': "Palestras do dia " + util.formata_dia_mes(dia, mes), 'palestras': sort_by_key(model.obtem_palestras_por_dia(data)) } ))
       
 class ProgramacaoSalas(webapp2.RequestHandler):
   def get(self):
@@ -37,7 +37,7 @@ class ProgramacaoSalas(webapp2.RequestHandler):
 class ProgramacaoPorSala(webapp2.RequestHandler):
   def get(self, sala, nome):
     path = os.path.join(os.path.dirname( __file__ ), 'palestras.html' )
-    self.response.out.write(template.render(path, { 'titulo': "Palestras da sala " + nome, 'palestras': model.obtem_palestras_por_sala(sala) }))
+    self.response.out.write(template.render(path, { 'titulo': "Palestras da sala " + nome, 'palestras': sort_by_key(model.obtem_palestras_por_sala(sala)) }))
 
 class ProgramacaoTrilhas(webapp2.RequestHandler):
   def get(self):
@@ -47,7 +47,7 @@ class ProgramacaoTrilhas(webapp2.RequestHandler):
 class ProgramacaoPorTrilha(webapp2.RequestHandler):
   def get(self, trilha, nome):
     path = os.path.join(os.path.dirname( __file__ ), 'palestras.html' )
-    self.response.out.write(template.render(path, { 'titulo': "Palestras da trilha " + nome, 'palestras': model.obtem_palestras_por_trilha(trilha) }))
+    self.response.out.write(template.render(path, { 'titulo': "Palestras da trilha " + nome, 'palestras': sort_by_key(model.obtem_palestras_por_trilha(trilha)_ }))
 
 class ProgramacaoAreas(webapp2.RequestHandler):
   def get(self):
@@ -57,11 +57,14 @@ class ProgramacaoAreas(webapp2.RequestHandler):
 class ProgramacaoPorArea(webapp2.RequestHandler):
   def get(self, area, nome):
     path = os.path.join(os.path.dirname( __file__ ), 'palestras.html' )
-    self.response.out.write(template.render(path, { 'titulo': "Palestras do tema " + nome, 'palestras': model.obtem_palestras_por_area(area) }))
+    self.response.out.write(template.render(path, { 'titulo': "Palestras do tema " + nome, 'palestras': sort_by_key(model.obtem_palestras_por_area(area)) }))
 
 def sort(unsorted):
   return sorted(unsorted.iteritems(), key=lambda (k,v): (v,k))     
-            
+   
+def sort_by_key(unsorted):
+  return sorted(unsorted.items())     
+         
 app = webapp2.WSGIApplication([('/', MainPage),
                                ('/agora', ProgramacaoAgora),                                
                                ('/dias', ProgramacaoDias),
